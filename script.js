@@ -1,7 +1,16 @@
+
+/**
+ * Highlight a cell.
+ * @param {Event} e 
+ */
 function toggleHighlight(e) {
-    e.srcElement.classList.add('highlight');
+    e.target.classList.add('highlight');
 }
 
+/**
+ * Create a new grid that is numBoxes x numBoxes in size.
+ * @param {Number} numBoxes - The number of boxes per side. default is 16.
+ */
 function createGrid(numBoxes = 16) {
     const gridContainer = document.querySelector(".grid-container");
     gridContainer.style.setProperty('--grid-rows', numBoxes);
@@ -14,6 +23,9 @@ function createGrid(numBoxes = 16) {
     }
 }
 
+/**
+ * Remove all of the blocks from the grid.
+ */
 function clearGrid() {
     const gridContainer = document.querySelector(".grid-container");
     while(gridContainer.firstChild) {
@@ -21,7 +33,11 @@ function clearGrid() {
     }
 }
 
-function promptForSize() {
+/**
+ * Ask the user to enter the desired grid size (1-100)
+ * @param {Event} e - event object passed from the listener
+ */
+function promptForSize(e) {
     let gridSize = 0;
     do {
         gridSize = parseInt(prompt("Enter grid size (1-100):"));
@@ -30,7 +46,12 @@ function promptForSize() {
     createGrid(gridSize);
 }
 
-function shake() {
+
+/**
+ * Reset all of the highlighted blocks
+ * @param {Event} e - event object passed from the listener
+ */
+function shake(e) {
     const blocks = document.querySelectorAll(".block");
     blocks.forEach(block => {
         if(block.classList.contains('highlight')) {
