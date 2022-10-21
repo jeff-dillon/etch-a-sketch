@@ -54,19 +54,6 @@ function clearGrid() {
 };
 
 /**
- * Ask the user to enter the desired grid size (1-100)
- * @param {Event} e - event object passed from the listener
- */
-function promptForSize(e) {
-    let gridSize = 0;
-    do {
-        gridSize = parseInt(prompt("Enter grid size (1-100):"));
-    } while (isNaN(gridSize) || gridSize > 100 || gridSize < 1);
-    clearGrid();
-    createGrid(gridSize);
-};
-
-/**
  * Reset all of the highlighted blocks
  * @param {Event} e - event object passed from the listener
  */
@@ -74,9 +61,6 @@ function clear(e) {
     const blocks = document.querySelectorAll(".block");
     blocks.forEach(block => {
         block.classList.value = 'block';
-        // if(block.classList.contains('highlight')) {
-        //     block.classList.remove('highlight');
-        // }
     });
 };
 
